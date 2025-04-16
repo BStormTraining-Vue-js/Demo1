@@ -1,10 +1,13 @@
 <script setup>
 import { ref } from 'vue';
-const name = ref('world');
+const rawHTML = ref('<a href="https://www.google.be">Google</a>');
 </script>
 
 <template>
-    <p>Hello {{ name }} !!</p>
+    <!-- HTML échappé -->
+    <p>Lien vers {{ rawHTML }} !</p>
+    <!-- HTML non échappé -->
+    <p>Lien vers <span v-html="rawHTML"></span>!</p>
 </template>
 
 <style scoped>
