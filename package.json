@@ -1,0 +1,20 @@
+{
+  "name": "vuejs-demo1",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Khun LY",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "vite": "^6.3.0"
+  }
+}
