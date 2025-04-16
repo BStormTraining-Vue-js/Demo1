@@ -1,13 +1,12 @@
 <script setup>
 import { ref } from 'vue';
-const rawHTML = ref('<a href="https://www.google.be">Google</a>');
+const disabled = ref(true);
 </script>
 
 <template>
-    <!-- HTML échappé -->
-    <p>Lien vers {{ rawHTML }} !</p>
-    <!-- HTML non échappé -->
-    <p>Lien vers <span v-html="rawHTML"></span>!</p>
+    <button :disabled="disabled">Click Me</button>
+    <!-- Si le nom de l'attribut est identique au nom de la variable JavaScript -->
+    <button :disabled>Click Me</button>
 </template>
 
 <style scoped>
