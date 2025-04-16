@@ -1,17 +1,22 @@
 <script setup>
-import { ref } from 'vue';
-const disabled = ref(true);
+const attributes = {
+    disabled: true,
+    type: 'reset',
+    class: 'btn-red',
+};
 </script>
 
 <template>
-    <button :disabled="disabled">Click Me</button>
-    <!-- Si le nom de l'attribut est identique au nom de la variable JavaScript -->
-    <button :disabled>Click Me</button>
+    <button v-bind="attributes">Click Me</button>
 </template>
 
 <style scoped>
-div{
-    font-size: 20px;
+.btn-red {
+    background-color: red;
+    color: white;
+}
+.btn-red:disabled {
+    opacity: 0.5;
 }
 </style>
 
