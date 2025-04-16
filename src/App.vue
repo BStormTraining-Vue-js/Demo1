@@ -1,8 +1,10 @@
 <script setup>
+import { ref } from 'vue';
+const name = ref('world');
 </script>
 
 <template>
-    <p>Hello world !!</p>
+    <p>Hello {{ name }} !!</p>
 </template>
 
 <style scoped>
