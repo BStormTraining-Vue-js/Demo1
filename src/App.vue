@@ -1,36 +1,20 @@
 <script setup>
-import { ref, reactive } from 'vue';
-const score = ref(7);
-const classes = reactive(['text-white', 'bg-green']);
+import { computed, ref } from 'vue';
+const isStPatrick = ref(true);
+const style = computed(() => ({
+    backgroundColor: isStPatrick ? 'green' : 'blue',
+    color: 'white',
+    fontSize: '16px',
+    padding: '10px',
+    borderRadius: '5px',
+}));
 </script>
 
 <template>
-    <p :class="{
-        success: score >= 8,
-        warning: score >=5 && score < 8,
-        danger: score < 5 }"
-    >{{ score }}</p>
-    <!-- <p class="warning">7</p> -->
-    <button :class="classes">Click Me !!</button>
-    <!-- <button class="text-white bg-green">Click Me !!</button> -->
+    <p :style>Hello world !!</p>
 </template>
 
 <style scoped>
 
-.success {
-    color: green;
-}
-.warning {
-    color: orange;
-}
-.danger {
-    color: red;
-}
-.text-white {
-    color: white;
-}
-.bg-green {
-    background-color: green;
-}
 </style>
 
