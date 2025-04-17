@@ -1,17 +1,19 @@
 <script setup>
-import { computed, ref } from 'vue';
-const isStPatrick = ref(true);
-const style = computed(() => ({
-    backgroundColor: isStPatrick ? 'green' : 'blue',
-    color: 'white',
-    fontSize: '16px',
-    padding: '10px',
-    borderRadius: '5px',
-}));
+import { onMounted, ref } from 'vue';
+const age = ref(1);
+
+onMounted(() => {
+    setInterval(() => {
+        age.value++;
+    }, 250);
+});
 </script>
 
 <template>
-    <p :style>Hello world !!</p>
+    <p>Age: {{ age }}</p>
+    <p v-if="age < 6">🙈</p>
+    <p v-else-if="age < 18">🙊</p>
+    <p v-else>🙉</p>
 </template>
 
 <style scoped>
