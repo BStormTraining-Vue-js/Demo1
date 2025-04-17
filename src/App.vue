@@ -1,22 +1,16 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-// const count = ref(42);
-let countWithoutRef = 42;
+import { onMounted, reactive } from 'vue';
+const counts = reactive([42]);
 
 onMounted(() => {
-//   setInterval(() => {
-//     count.value++;
-//   }, 1000);
-
-  setInterval(() => {
-    countWithoutRef++;
-  }, 1000);
+    setInterval(() => {
+        counts.push(counts.at(-1) + 1);
+    }, 1000);
 });
 </script>
 
 <template>
-    <!-- <p>Avec ref {{ count }}</p> -->
-    <p>Sans ref {{ countWithoutRef }}</p>
+    <p>{{ counts }}</p>
 </template>
 
 <style scoped>
