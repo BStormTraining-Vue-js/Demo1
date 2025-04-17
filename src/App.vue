@@ -1,19 +1,17 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-const age = ref(1);
+const isLoggedIn = ref(false);
 
 onMounted(() => {
     setInterval(() => {
-        age.value++;
-    }, 250);
+        isLoggedIn.value = true;
+    }, 2000);
 });
 </script>
 
 <template>
-    <p>Age: {{ age }}</p>
-    <p v-if="age < 6">🙈</p>
-    <p v-else-if="age < 18">🙊</p>
-    <p v-else>🙉</p>
+    <button v-show="!isLoggedIn">Login</button>
+    <button v-show="isLoggedIn">Logout</button>
 </template>
 
 <style scoped>
