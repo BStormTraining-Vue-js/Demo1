@@ -1,17 +1,36 @@
 <script setup>
-import { reactive, computed } from 'vue';
-const products = reactive([{name: 'Eau 50cl', quantity: 2, price: 0.9}, {name: 'Soda 33cl', quantity: 3, price: 0.7}]);
-// création d'un state calculé pour le prix total
-const total = computed(() => products.reduce((prev, current) => prev + current.quantity * current.price, 0).toFixed(2));
+import { ref, reactive } from 'vue';
+const score = ref(7);
+const classes = reactive(['text-white', 'bg-green']);
 </script>
 
 <template>
-    <!-- ici le prix total est recalculé à chaque rendu -->
-    <p>Prix total: {{ products.reduce((prev, current) => prev + current.quantity * current.price, 0).toFixed(2) }}€</p>
-    <!-- utilisation du state calculé -->
-    <p>Prix total: {{ total }}€</p>
+    <p :class="{
+        success: score >= 8,
+        warning: score >=5 && score < 8,
+        danger: score < 5 }"
+    >{{ score }}</p>
+    <!-- <p class="warning">7</p> -->
+    <button :class="classes">Click Me !!</button>
+    <!-- <button class="text-white bg-green">Click Me !!</button> -->
 </template>
 
 <style scoped>
+
+.success {
+    color: green;
+}
+.warning {
+    color: orange;
+}
+.danger {
+    color: red;
+}
+.text-white {
+    color: white;
+}
+.bg-green {
+    background-color: green;
+}
 </style>
 
