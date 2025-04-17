@@ -1,26 +1,17 @@
 <script setup>
-import { onMounted, ref, useTemplateRef, nextTick } from 'vue';
-const text = ref('Khun');
-const paragraphe = useTemplateRef('paragraphe');
-onMounted(() => {
-    setTimeout(async () => {
-        text.value = 'Aude';
-        // le paragraphe du DOM n'est pas encore mis à jour
-        console.log(paragraphe.value.innerText);
-        await nextTick();
-        // le paragraphe du DOM est mis à jour
-        console.log(paragraphe.value.innerText);
-    }, 1000);
-});
+import { reactive, computed } from 'vue';
+const products = reactive([{name: 'Eau 50cl', quantity: 2, price: 0.9}, {name: 'Soda 33cl', quantity: 3, price: 0.7}]);
+// création d'un state calculé pour le prix total
+const total = computed(() => products.reduce((prev, current) => prev + current.quantity * current.price, 0).toFixed(2));
 </script>
 
 <template>
-    <p ref="paragraphe">{{ text }}</p>
+    <!-- ici le prix total est recalculé à chaque rendu -->
+    <p>Prix total: {{ products.reduce((prev, current) => prev + current.quantity * current.price, 0).toFixed(2) }}€</p>
+    <!-- utilisation du state calculé -->
+    <p>Prix total: {{ total }}€</p>
 </template>
 
 <style scoped>
-    p {
-        width: 100px;
-    }
 </style>
 
