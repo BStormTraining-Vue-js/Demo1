@@ -1,18 +1,26 @@
 <script setup>
-import { onMounted, reactive } from 'vue';
-const counts = reactive([42]);
-
+import { onMounted, ref, useTemplateRef, nextTick } from 'vue';
+const text = ref('Khun');
+const paragraphe = useTemplateRef('paragraphe');
 onMounted(() => {
-    setInterval(() => {
-        counts.push(counts.at(-1) + 1);
+    setTimeout(async () => {
+        text.value = 'Aude';
+        // le paragraphe du DOM n'est pas encore mis à jour
+        console.log(paragraphe.value.innerText);
+        await nextTick();
+        // le paragraphe du DOM est mis à jour
+        console.log(paragraphe.value.innerText);
     }, 1000);
 });
 </script>
 
 <template>
-    <p>{{ counts }}</p>
+    <p ref="paragraphe">{{ text }}</p>
 </template>
 
 <style scoped>
+    p {
+        width: 100px;
+    }
 </style>
 
