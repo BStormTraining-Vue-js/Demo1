@@ -1,13 +1,14 @@
 <script setup>
-const keyUpEnterHanler = (event) => {
-    // inutile d'ajouter 
-    // if (event.key === 'Enter') 
-        alert(event.target.value);
+const leftClick = () => {
+    alert('Vous avez cliquez sur le bouton gauche !');
+};
+const rightClick = () => {
+    alert('Vous avez cliquez sur le bouton droit !');
 };
 </script>
 
 <template>
-    <input type="text" @keyup.enter="keyUpEnterHanler" placeholder="Appuyer sur Entrée" />
+    <button @click.left="leftClick" @click.right.prevent="rightClick">Click me !</button>
 </template>
 
 <style scoped>
