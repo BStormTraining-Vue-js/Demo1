@@ -1,13 +1,13 @@
 <script setup>
-const clickHandler = (event) => {
+const keyUpEnterHanler = (event) => {
     // inutile d'ajouter 
-    // event.preventDefault()
-    alert('Vous avez cliqué sur le lien ! Sans être redirigé !')
+    // if (event.key === 'Enter') 
+        alert(event.target.value);
 };
 </script>
 
 <template>
-    <a href="https://google.be" @click.prevent="clickHandler">Google</a>
+    <input type="text" @keyup.enter="keyUpEnterHanler" placeholder="Appuyer sur Entrée" />
 </template>
 
 <style scoped>
