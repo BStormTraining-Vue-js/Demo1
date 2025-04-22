@@ -1,8 +1,14 @@
 <script setup>
+import { ref } from 'vue';
+const count = ref(0);
+const increase = () => {
+    count.value++;
+}
 </script>
 
 <template>
-    <p>Hello world !!</p>
+    <p>Compteur : {{ count }}</p>
+    <button @click="increase">+</button>
 </template>
 
 <style scoped>
