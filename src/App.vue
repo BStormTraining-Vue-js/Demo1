@@ -1,20 +1,23 @@
-<script setup>
-import { computed, ref } from 'vue';
-
-const number = ref(null);
-const double = computed(() => number.value + 10);
+<script setup lang="ts">
+import { reactive, watch } from 'vue';
+const obj = reactive({ nom: 'Khun', age: 43, adresse: { rue: 'Chemin des devs', ville: 'Bruxelles' } });
+watch(obj, () => {
+    console.log('Le nom ou l\'âge a changé');
+})
+watch(() => obj.age, () => {
+    console.log('L\'âge a changé');
+})
+watch(() => obj.adresse, () => {
+    console.log('Ne se déclenche ici qu\'avec deep: true');
+}, /*{ deep: true }*/)
 </script>
  
 <template>
     <div>
-        <p>Input sans modificateur</p>
-        <input v-model="number">
+        <input v-model="obj.nom">
+        <input v-model="obj.age">
+        <input v-model="obj.adresse.ville">
     </div>
-    <div>
-        <p>Input avec modificateurs</p>
-        <input v-model.lazy.number="number">
-    </div>
-    <p>double : {{ double }}</p>
 </template>
 
 <style scoped>
