@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { onMounted, useTemplateRef } from 'vue';
 
-const paragraphe = useTemplateRef('p');
-console.log(paragraphe.value); // null
+const listItems = useTemplateRef('li');
+const ingredients = ['sel', 'poivre', 'sucre'];
 onMounted(() => {
-    console.log(paragraphe.value); // <p>Some text ...</p>
+    console.log(listItems.value); // [li, li, li]
 })
 </script>
  
 <template>
-    <p ref="p">Some text ...</p>
+    <ul>
+        <li v-for="item in ingredients" ref="li"> {{ item }}</li>
+    </ul>
 </template>
 
 <style scoped>
